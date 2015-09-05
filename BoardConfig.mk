@@ -20,13 +20,22 @@ TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_VARIANT := krait
 TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
-
+STRICT_ALIASING := true
+KRAIT_TUNINGS := true
+USE_O3_OPTIMIZATIONS := true
+USE_HOST_4_8 := true
 TARGET_NO_BOOTLOADER := true
 
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE :=  2048
 BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
 BOARD_RAMDISK_OFFSET     := 0x02000000
+BOARD_KERNEL_IMAGE_NAME := zImage-dtb
+TARGET_GCC_VERSION_EXP := 4.9
+TARGET_GCC_VERSION_ARM := 4.9
+# Define kernel config for inline building
+TARGET_KERNEL_CONFIG := despair_defconfig
+TARGET_KERNEL_SOURCE := kernel/moto/shamu
 
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 vmalloc=340M androidboot.console=ttyHSL0 androidboot.hardware=shamu msm_rtb.filter=0x37 ehci-hcd.park=3 utags.blkdev=/dev/block/platform/msm_sdcc.1/by-name/utags utags.backup=/dev/block/platform/msm_sdcc.1/by-name/utagsBackup coherent_pool=8M
 
